@@ -1,4 +1,5 @@
 
+
 import { RecommendationList } from "@/components/recommendation-list";
 import type { Story } from '@/lib/types';
 import { getStories } from '@/lib/stories';
@@ -13,7 +14,7 @@ export default async function RecommendationsPage() {
 
   const recommendations = stories.map(story => ({
     title: story.title,
-    story_id: story.story_id,
+    slug: story.slug,
     description: story.description,
     learningConcepts: "تفاعلية, قائمة على الاختيار", // Placeholder
     difficulty: 'medium', // Placeholder
@@ -32,3 +33,4 @@ export default async function RecommendationsPage() {
     </div>
   );
 }
+

@@ -1,4 +1,5 @@
 
+
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -7,7 +8,7 @@ import { Button } from './ui/button';
 
 type Recommendation = {
   title: string;
-  story_id: string; // Changed from slug to story_id
+  slug: string; 
   description: string;
   learningConcepts: string;
   difficulty: string;
@@ -56,7 +57,7 @@ export function RecommendationList({ recommendations }: RecommendationListProps)
           </CardContent>
           <CardFooter>
             <Button asChild className="w-full">
-              <Link href={`/story/${rec.story_id}`}>
+              <Link href={`/story/${rec.slug}`}>
                 ابدأ القراءة <ArrowLeft className="mr-2 h-4 w-4" />
               </Link>
             </Button>
@@ -66,3 +67,4 @@ export function RecommendationList({ recommendations }: RecommendationListProps)
     </div>
   );
 }
+
