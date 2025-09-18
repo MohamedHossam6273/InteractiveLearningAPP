@@ -2,15 +2,14 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import type { Story, StoryChoice } from '@/lib/types';
+import type { Story, StoryChoice, StoryNode } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export function StoryPlayer({ story }: { story: Story }) {
-  const storyContent = story.content;
-  const [currentNodeId, setCurrentNodeId] = useState(storyContent.nodes[0].node_id);
+  const [currentNodeId, setCurrentNodeId] = useState(story.nodes[0].node_id);
 
-  const currentNode = storyContent.nodes.find((node) => node.node_id === currentNodeId);
+  const currentNode = story.nodes.find((node) => node.node_id === currentNodeId);
   
   const imageUrl = `/stories/${story.id}/${currentNode?.image_url}`;
   const imageHint = currentNode?.text_ar.substring(0, 30) || "story image";
@@ -53,14 +52,14 @@ export function StoryPlayer({ story }: { story: Story }) {
 
         <div className="max-w-prose w-full text-lg text-foreground bg-black/40 backdrop-blur-md p-8 rounded-lg shadow-2xl border border-white/10">
             <div className="w-full animate-fade-in">
-                <p className="mb-4 leading-relaxed">{currentNode.text_ar}</p>
+                <p className="mb-4 leading-relaxed text-white">{currentNode.text_ar}</p>
             </div>
             <div className='flex flex-col gap-4 mt-8'>
                 <h2 className="text-xl font-bold text-center">النهاية</h2>
                 <Button asChild>
                     <Link href="/recommendations">ابحث عن قصة جديدة</Link>
                 </Button>
-                <Button variant="outline" onClick={() => setCurrentNodeId(storyContent.nodes[0].node_id)}>
+                <Button variant="outline" onClick={() => setCurrentNodeId(story.nodes[0].node_id)}>
                     ابدأ هذه القصة من جديد
                 </Button>
             </div>
@@ -84,7 +83,7 @@ export function StoryPlayer({ story }: { story: Story }) {
 
       <div className="max-w-prose w-full text-lg text-foreground bg-black/40 backdrop-blur-md p-8 rounded-lg shadow-2xl border border-white/10">
         <div className="w-full animate-fade-in">
-            <p className="mb-6 leading-relaxed">{currentNode.text_ar}</p>
+            <p className="mb-6 leading-relaxed text-white">{currentNode.text_ar}</p>
             <div className='flex flex-col gap-2'>
             {currentNode.choices?.map((choice, index) => (
                 <Button
