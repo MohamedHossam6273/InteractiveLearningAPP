@@ -6,7 +6,7 @@ export const getStories = async (): Promise<Story[]> => {
     const { data: stories, error } = await supabase.from('stories').select('*');
 
     if (error) {
-        console.error('Error fetching stories:', error);
+        console.error('Error fetching stories:', JSON.stringify(error, null, 2));
         return [];
     }
 
@@ -27,7 +27,7 @@ export const getStoryBySlug = async (slug: string): Promise<Story | null> => {
         .single();
 
     if (error) {
-        console.error('Error fetching story by slug:', error);
+        console.error('Error fetching story by slug:', JSON.stringify(error, null, 2));
         return null;
     }
     
