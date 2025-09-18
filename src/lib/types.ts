@@ -1,24 +1,23 @@
-export type StoryChoice = {
-  type: 'choice';
-  text: string;
-  nextId: number;
-};
 
-export type StoryText = {
-  type: 'text';
-  value: string;
+export type StoryChoice = {
+  choice_text_ar: string;
+  next_node_id: string;
 };
 
 export type StoryNode = {
-  id: number;
-  backgroundImage: string;
-  imageHint: string;
-  content: (StoryText | StoryChoice)[];
+  node_id: string;
+  text_ar: string;
+  image_url: string;
+  choices?: StoryChoice[];
 };
 
 export type Story = {
   slug: string;
   title: string;
   description: string;
-  nodes: StoryNode[];
+  nodes: {
+    story_id: string;
+    languages: string[];
+    nodes: StoryNode[];
+  };
 };

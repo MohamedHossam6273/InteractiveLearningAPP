@@ -1,13 +1,20 @@
+
 import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from './ui/button';
-import { slugify } from '@/lib/utils';
-import { PersonalizedStoryRecommendationsOutput } from '@/ai/flows/personalized-story-recommendations';
+
+type Recommendation = {
+  title: string;
+  slug: string;
+  description: string;
+  learningConcepts: string;
+  difficulty: string;
+}
 
 type RecommendationListProps = {
-  recommendations: PersonalizedStoryRecommendationsOutput['storyRecommendations'];
+  recommendations: Recommendation[];
 }
 
 export function RecommendationList({ recommendations }: RecommendationListProps) {
@@ -49,7 +56,7 @@ export function RecommendationList({ recommendations }: RecommendationListProps)
           </CardContent>
           <CardFooter>
             <Button asChild className="w-full">
-              <Link href={`/story/${slugify(rec.title)}`}>
+              <Link href={`/story/${rec.slug}`}>
                 ابدأ القراءة <ArrowLeft className="mr-2 h-4 w-4" />
               </Link>
             </Button>
