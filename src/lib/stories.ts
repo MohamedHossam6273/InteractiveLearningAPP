@@ -3,18 +3,18 @@ import type { Story } from './types';
 export const stories: Story[] = [
   {
     slug: 'the-phoenix-project',
-    title: 'The Phoenix Project',
-    description: 'An interactive corporate drama about saving a failing, high-stakes project.',
+    title: 'مشروع فينيكس',
+    description: 'دراما تفاعلية في شركة حول إنقاذ مشروع فاشل وعالي المخاطر.',
     nodes: [
       {
         id: 1,
         backgroundImage: 'https://picsum.photos/seed/phoenix-project-1/1920/1080',
         imageHint: 'corporate office',
         content: [
-          { type: 'text', value: 'You are Alex, the new project lead for "Phoenix," a project that\'s six months behind schedule and massively over budget. The team is demoralized. Your first day, you walk into a tense war room. All eyes are on you.' },
-          { type: 'text', value: 'Your predecessor was a notorious micromanager. The lead engineer, Sarah, approaches you with the first critical decision of the day: a major architectural choice for the database.' },
-          { type: 'choice', text: 'Dive deep into the technical details with her.', nextId: 2 },
-          { type: 'choice', text: 'Trust her expertise and delegate the decision.', nextId: 3 },
+          { type: 'text', value: 'أنت أليكس، قائد المشروع الجديد لمشروع "فينيكس"، وهو مشروع متأخر ستة أشهر عن الجدول الزمني ومتجاوز الميزانية بشكل كبير. الفريق محبط. في يومك الأول، تدخل إلى غرفة حرب متوترة. كل العيون عليك.' },
+          { type: 'text', value: 'كان سلفك مديرًا دقيقًا سيئ السمعة. تقترب منك سارة، كبيرة المهندسين، بالقرار الحاسم الأول لهذا اليوم: اختيار معماري رئيسي لقاعدة البيانات.' },
+          { type: 'choice', text: 'الغوص في التفاصيل الفنية معها.', nextId: 2 },
+          { type: 'choice', text: 'الثقة بخبرتها وتفويض القرار.', nextId: 3 },
         ],
       },
       {
@@ -22,9 +22,9 @@ export const stories: Story[] = [
         backgroundImage: 'https://picsum.photos/seed/phoenix-project-2/1920/1080',
         imageHint: 'stressed manager',
         content: [
-          { type: 'text', value: 'You spend the entire day huddled with Sarah, questioning every assumption. You feel in control, but you notice the team\'s energy drain. They exchange weary glances. By the end of the day, no other work has progressed.' },
-          { type: 'text', value: 'Learning Concept: Micromanagement can stifle autonomy and slow down progress by creating bottlenecks.' },
-          { type: 'choice', text: 'Continue to the next day.', nextId: 4 },
+          { type: 'text', value: 'تقضي اليوم بأكمله مع سارة، وتشكك في كل افتراض. تشعر بالسيطرة، لكنك تلاحظ استنزاف طاقة الفريق. يتبادلون نظرات متعبة. بحلول نهاية اليوم، لم يتم إحراز أي تقدم في أي عمل آخر.' },
+          { type: 'text', value: 'مفهوم التعلم: الإدارة الدقيقة يمكن أن تخنق الاستقلالية وتبطئ التقدم عن طريق خلق اختناقات.' },
+          { type: 'choice', text: 'الانتقال إلى اليوم التالي.', nextId: 4 },
         ],
       },
       {
@@ -32,9 +32,9 @@ export const stories: Story[] = [
         backgroundImage: 'https://picsum.photos/seed/phoenix-project-3/1920/1080',
         imageHint: 'team meeting',
         content: [
-          { type: 'text', value: 'You tell Sarah, "I trust your judgment. You know the system better than anyone. Make the call and let me know how I can support you." A wave of relief washes over her face. She quickly gathers her sub-team, and by lunch, they have a plan forward. The mood in the room lifts.' },
-          { type: 'text', value: 'Learning Concept: Empowerment and delegation build trust and leverage the expertise within a team, increasing ownership and speed.' },
-          { type: 'choice', text: 'Continue to the next day.', nextId: 5 },
+          { type: 'text', value: 'تقول لسارة، "أنا أثق بحكمك. أنت تعرفين النظام أفضل من أي شخص آخر. اتخذي القرار وأخبريني كيف يمكنني دعمك." موجة من الارتياح تغمر وجهها. سرعان ما تجمع فريقها الفرعي، وبحلول وقت الغداء، لديهم خطة للمضي قدمًا. يتحسن المزاج في الغرفة.' },
+          { type: 'text', value: 'مفهوم التعلم: التمكين والتفويض يبنيان الثقة ويستفيدان من الخبرة داخل الفريق، مما يزيد من الملكية والسرعة.' },
+          { type: 'choice', text: 'الانتقال إلى اليوم التالي.', nextId: 5 },
         ],
       },
       {
@@ -42,9 +42,9 @@ export const stories: Story[] = [
         backgroundImage: 'https://picsum.photos/seed/phoenix-project-4/1920/1080',
         imageHint: 'empty office',
         content: [
-          { type: 'text', value: 'The project continues to move at a snail\'s pace. Your constant involvement has made you the single point of failure. The team waits for your approval on everything. The deadline is missed again.' },
-          { type: 'text', value: 'You failed to launch the Phoenix Project on time. But you\'ve learned a valuable lesson about leadership.' },
-          { type: 'choice', text: 'Start a new story.', nextId: 100 },
+          { type: 'text', value: 'يستمر المشروع في التحرك بوتيرة بطيئة. لقد جعلك تدخلك المستمر نقطة فشل واحدة. ينتظر الفريق موافقتك على كل شيء. يتم تفويت الموعد النهائي مرة أخرى.' },
+          { type: 'text', value: 'لقد فشلت في إطلاق مشروع فينيكس في الوقت المحدد. لكنك تعلمت درسًا قيمًا عن القيادة.' },
+          { type: 'choice', text: 'ابدأ قصة جديدة.', nextId: 100 },
         ],
       },
        {
@@ -52,9 +52,9 @@ export const stories: Story[] = [
         backgroundImage: 'https://picsum.photos/seed/phoenix-project-5/1920/1080',
         imageHint: 'successful team',
         content: [
-          { type: 'text', value: 'With the team empowered, they start taking initiative. Small wins build momentum. You focus on removing obstacles and protecting them from external pressure. The project starts to turn around.' },
-          { type: 'text', value: 'Against all odds, you launch the Phoenix Project. It\'s not perfect, but it\'s a massive success given where you started. You\'ve learned that leadership is not about having all the answers, but about enabling others to find them.' },
-          { type: 'choice', text: 'Start a new story.', nextId: 100 },
+          { type: 'text', value: 'مع تمكين الفريق، يبدأون في أخذ زمام المبادرة. الانتصارات الصغيرة تبني الزخم. تركز على إزالة العقبات وحمايتهم من الضغط الخارجي. يبدأ المشروع في التحول.' },
+          { type: 'text', value: 'رغم كل الصعاب، تطلق مشروع فينيكس. إنه ليس مثاليًا، لكنه نجاح هائل بالنظر إلى ما بدأت منه. لقد تعلمت أن القيادة لا تتعلق بامتلاك كل الإجابات، بل بتمكين الآخرين من إيجادها.' },
+          { type: 'choice', text: 'ابدأ قصة جديدة.', nextId: 100 },
         ],
       },
     ],

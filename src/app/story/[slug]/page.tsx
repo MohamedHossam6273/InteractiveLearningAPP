@@ -26,14 +26,14 @@ export default function StoryPage() {
     // Handle story end or invalid node
     return (
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-65px)] text-center p-4">
-        <h1 className="text-3xl font-bold font-headline mb-4">The End</h1>
-        <p className="text-muted-foreground mb-8">You have reached the end of this story path.</p>
+        <h1 className="text-3xl font-bold font-headline mb-4">النهاية</h1>
+        <p className="text-muted-foreground mb-8">لقد وصلت إلى نهاية مسار هذه القصة.</p>
         <div className='flex gap-4'>
             <Button asChild>
-                <Link href="/recommendations">Find a New Story</Link>
+                <Link href="/recommendations">ابحث عن قصة جديدة</Link>
             </Button>
             <Button variant="outline" onClick={() => setCurrentNodeId(1)}>
-                Start This Story Over
+                ابدأ هذه القصة من جديد
             </Button>
         </div>
       </div>
@@ -56,7 +56,7 @@ export default function StoryPage() {
               key={index}
               onClick={() => handleChoice(item)}
               variant="outline"
-              className="mr-2 mb-2 bg-background/80 hover:bg-accent hover:text-accent-foreground"
+              className="ml-2 mb-2 bg-background/80 hover:bg-accent hover:text-accent-foreground"
             >
               {item.text}
             </Button>

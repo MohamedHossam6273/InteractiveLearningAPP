@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -21,12 +21,10 @@ export default function Home() {
           style={{ animationFillMode: 'backwards' }}
         >
           <h1 className="text-4xl md:text-6xl font-bold font-headline mb-4 text-primary">
-            Choice Learn
+            اختر وتعلم
           </h1>
           <p className="text-lg md:text-2xl mb-8 max-w-3xl mx-auto text-foreground/80">
-            Tired of reading non-fiction you can't remember? Learn
-            life-changing concepts through gripping, interactive fictional
-            stories.
+            هل سئمت من قراءة الكتب غير الخيالية التي لا يمكنك تذكرها؟ تعلم مفاهيم تغير حياتك من خلال قصص خيالية تفاعلية وجذابة.
           </p>
         </div>
         <div
@@ -35,8 +33,8 @@ export default function Home() {
         >
           <Button asChild size="lg">
             <Link href="/recommendations">
-              Find Your First Story
-              <ArrowRight className="ml-2 h-5 w-5" />
+              ابحث عن قصتك الأولى
+              <ArrowLeft className="mr-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
