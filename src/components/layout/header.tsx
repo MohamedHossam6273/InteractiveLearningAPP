@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { BookOpenText } from "lucide-react";
 import { Button } from "../ui/button";
+import { ModeToggle } from "../mode-toggle";
 
 export function Header() {
   return (
@@ -17,6 +18,7 @@ export function Header() {
             <Button variant="ghost" asChild>
                 <Link href="/recommendations">القصص</Link>
             </Button>
+            <ModeToggle />
           </nav>
         </div>
       </div>

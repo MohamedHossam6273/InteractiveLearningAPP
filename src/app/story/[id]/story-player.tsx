@@ -7,12 +7,11 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export function StoryPlayer({ story }: { story: Story }) {
-  const storyContent = story;
+  const storyContent = story.content;
   const [currentNodeId, setCurrentNodeId] = useState(storyContent.nodes[0].node_id);
 
   const currentNode = storyContent.nodes.find((node) => node.node_id === currentNodeId);
   
-  // Construct image URL assuming it's in the story's folder
   const imageUrl = `/stories/${story.id}/${currentNode?.image_url}`;
   const imageHint = currentNode?.text_ar.substring(0, 30) || "story image";
 
@@ -50,9 +49,9 @@ export function StoryPlayer({ story }: { story: Story }) {
             key={currentNode.node_id}
             priority
         />
-        <div className="absolute inset-0 bg-black/60 -z-10" />
+        <div className="absolute inset-0 bg-black/70 -z-10" />
 
-        <div className="max-w-prose w-full text-lg text-background bg-black/30 backdrop-blur-sm p-8 rounded-lg shadow-2xl border border-white/10">
+        <div className="max-w-prose w-full text-lg text-foreground bg-black/40 backdrop-blur-md p-8 rounded-lg shadow-2xl border border-white/10">
             <div className="w-full animate-fade-in">
                 <p className="mb-4 leading-relaxed">{currentNode.text_ar}</p>
             </div>
@@ -81,9 +80,9 @@ export function StoryPlayer({ story }: { story: Story }) {
         key={currentNode.node_id}
         priority
       />
-      <div className="absolute inset-0 bg-black/60 -z-10" />
+      <div className="absolute inset-0 bg-black/70 -z-10" />
 
-      <div className="max-w-prose w-full text-lg text-background bg-black/30 backdrop-blur-sm p-8 rounded-lg shadow-2xl border border-white/10">
+      <div className="max-w-prose w-full text-lg text-foreground bg-black/40 backdrop-blur-md p-8 rounded-lg shadow-2xl border border-white/10">
         <div className="w-full animate-fade-in">
             <p className="mb-6 leading-relaxed">{currentNode.text_ar}</p>
             <div className='flex flex-col gap-2'>
