@@ -5,21 +5,18 @@ import Image from 'next/image';
 import type { Story, StoryChoice } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function StoryPlayer({ story }: { story: Story }) {
-  const storyContent = story.content;
+  const storyContent = story;
   const [currentNodeId, setCurrentNodeId] = useState(storyContent.nodes[0].node_id);
 
   const currentNode = storyContent.nodes.find((node) => node.node_id === currentNodeId);
   
-  // Use story.id which is the numeric ID from the database for lookups
-  const image = PlaceHolderImages.find(img => story.id.toString().includes(img.id.split('-')[0]) && currentNode?.image_url.includes(img.id.split('-')[1]));
-  const imageUrl = image?.imageUrl ?? "https://picsum.photos/seed/default/1920/1080";
-  const imageHint = image?.imageHint ?? "story image";
+  // Construct image URL assuming it's in the story's folder
+  const imageUrl = `/stories/${story.id}/${currentNode?.image_url}`;
+  const imageHint = currentNode?.text_ar.substring(0, 30) || "story image";
 
   if (!currentNode) {
-    // This should ideally not happen if the story is well-formed.
     return (
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-65px)] text-center p-4">
         <h1 className="text-3xl font-bold font-headline mb-4">خطأ في القصة</h1>
@@ -32,7 +29,6 @@ export function StoryPlayer({ story }: { story: Story }) {
   }
 
   const handleChoice = (choice: StoryChoice) => {
-    // Check for ending nodes
     if (!choice.next_node_id) {
         setCurrentNodeId('end'); // a virtual node id
     } else {

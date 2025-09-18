@@ -1,6 +1,7 @@
 
 import { RecommendationList } from "@/components/recommendation-list";
 import { getStories } from '@/lib/stories';
+import type { StoryListItem } from "@/lib/types";
 
 export const metadata = {
     title: "كل القصص | اختر وتعلم",
@@ -10,12 +11,13 @@ export const metadata = {
 export default async function RecommendationsPage() {
   const stories = await getStories();
 
-  const recommendations = stories.map(story => ({
+  const recommendations = stories.map((story: StoryListItem) => ({
     id: story.id,
     title: story.title,
-    description: story.subtitle, // Use subtitle for the description
-    learningConcepts: "تفاعلية, قائمة على الاختيار", // Placeholder
-    difficulty: 'medium', // Placeholder
+    description: story.subtitle,
+    learningConcepts: story.learning_concepts,
+    difficulty: story.difficulty,
+    coverImageUrl: story.cover_image_url
   }));
 
   return (

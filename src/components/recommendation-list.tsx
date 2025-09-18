@@ -1,17 +1,17 @@
-
-
 import Link from 'next/link';
+import Image from 'next/image';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from './ui/button';
 
 type Recommendation = {
-  id: number;
+  id: string;
   title: string;
   description?: string;
   learningConcepts: string;
   difficulty: string;
+  coverImageUrl?: string;
 }
 
 type RecommendationListProps = {
@@ -33,8 +33,18 @@ export function RecommendationList({ recommendations }: RecommendationListProps)
 
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {recommendations.map((rec, index) => (
-        <Card key={index} className="flex flex-col hover:shadow-lg transition-shadow duration-300">
+      {recommendations.map((rec) => (
+        <Card key={rec.id} className="flex flex-col hover:shadow-lg transition-shadow duration-300 overflow-hidden">
+          {rec.coverImageUrl && (
+            <div className="relative h-48 w-full">
+              <Image
+                src={rec.coverImageUrl}
+                alt={`Cover image for ${rec.title}`}
+                fill
+                className="object-cover"
+              />
+            </div>
+          )}
           <CardHeader>
             <CardTitle>{rec.title}</CardTitle>
             {rec.description && <CardDescription>{rec.description}</CardDescription>}

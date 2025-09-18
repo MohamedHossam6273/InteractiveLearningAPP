@@ -1,42 +1,44 @@
+import type { Story, StoryListItem } from './types';
 
-import { createClient } from '@/lib/supabase/server';
-import type { Story } from './types';
+// The base URL for the stories on GitHub Pages.
+// This assumes the stories are in a 'stories' directory in the public folder.
+const BASE_URL = '/stories'; 
 
-// This function now fetches id, title, and subtitle
-export const getStories = async (): Promise<Pick<Story, 'id' | 'title' | 'subtitle'>[]> => {
-    const supabase = createClient();
-    const { data: stories, error } = await supabase.from('stories').select('id, title, subtitle');
-
-    if (error) {
-        console.error('Error fetching stories:', JSON.stringify(error, null, 2));
-        return [];
+/**
+ * Fetches the list of all available stories from story-list.json.
+ */
+export const getStories = async (): Promise<StoryListItem[]> => {
+  try {
+    const response = await fetch(`${BASE_URL}/story-list.json`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-
-    return stories;
+    const storyList = await response.json();
+    return storyList.stories;
+  } catch (error) {
+    console.error('Error fetching story list:', error);
+    return [];
+  }
 };
 
-export const getStoryById = async (id: number): Promise<Story | null> => {
-    const supabase = createClient();
-    // The query now selects all columns from the stories table
-    const { data, error } = await supabase
-        .from('stories')
-        .select('*')
-        .eq('id', id)
-        .single();
-
-    if (error) {
-        console.error('Error fetching story by id:', JSON.stringify(error, null, 2));
-        return null;
+/**
+ * Fetches the content of a single story by its ID.
+ * The ID corresponds to the folder name in the /stories directory.
+ * @param id - The ID of the story to fetch.
+ */
+export const getStoryById = async (id: string): Promise<Story | null> => {
+  try {
+    const response = await fetch(`${BASE_URL}/${id}/story.json`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
+    const storyContent: Story = await response.json();
     
-    if (!data) {
-        return null;
-    }
+    // Add the id to the story object so we can use it for image paths.
+    return { ...storyContent, id };
 
-    // The story structure is now in the 'content' column.
-    // We assume Supabase automatically parses the JSONB column.
-    return {
-        ...data,
-        content: typeof data.content === 'string' ? JSON.parse(data.content) : data.content,
-    };
-}
+  } catch (error) {
+    console.error(`Error fetching story by id (${id}):`, error);
+    return null;
+  }
+};
