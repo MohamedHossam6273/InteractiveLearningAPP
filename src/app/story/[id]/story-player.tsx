@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from 'react';
@@ -15,7 +14,7 @@ export function StoryPlayer({ story }: { story: Story }) {
   const currentNode = storyContent.nodes.find((node) => node.node_id === currentNodeId);
   
   // Use story_id from the nested content object for image lookup
-  const image = PlaceHolderImages.find(img => storyContent.story_id.includes(img.id.split('-')[0]) && currentNode?.image_url.includes(img.id.split('-')[1]));
+  const image = PlaceHolderImages.find(img => story.id.toString().includes(img.id.split('-')[0]) && currentNode?.image_url.includes(img.id.split('-')[1]));
   const imageUrl = image?.imageUrl ?? "https://picsum.photos/seed/default/1920/1080";
   const imageHint = image?.imageHint ?? "story image";
 
