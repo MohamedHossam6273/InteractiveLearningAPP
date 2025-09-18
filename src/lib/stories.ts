@@ -2,9 +2,10 @@
 import { createClient } from '@/lib/supabase/server';
 import type { Story } from './types';
 
-export const getStories = async (): Promise<Omit<Story, 'nodes' | 'story_id' | 'description'>[]> => {
+// This function now fetches id, title, and subtitle
+export const getStories = async (): Promise<Pick<Story, 'id' | 'title' | 'subtitle'>[]> => {
     const supabase = createClient();
-    const { data: stories, error } = await supabase.from('stories').select('id, title');
+    const { data: stories, error } = await supabase.from('stories').select('id, title, subtitle');
 
     if (error) {
         console.error('Error fetching stories:', JSON.stringify(error, null, 2));
@@ -16,6 +17,7 @@ export const getStories = async (): Promise<Omit<Story, 'nodes' | 'story_id' | '
 
 export const getStoryById = async (id: number): Promise<Story | null> => {
     const supabase = createClient();
+    // The query now selects all columns from the stories table
     const { data, error } = await supabase
         .from('stories')
         .select('*')
@@ -31,10 +33,10 @@ export const getStoryById = async (id: number): Promise<Story | null> => {
         return null;
     }
 
-    // The 'nodes' column from supabase contains the full story JSON object.
+    // The story structure is now in the 'content' column.
+    // We assume Supabase automatically parses the JSONB column.
     return {
         ...data,
-        // The data from the 'nodes' column is the story itself
-        nodes: typeof data.nodes === 'string' ? JSON.parse(data.nodes) : data.nodes,
+        content: typeof data.content === 'string' ? JSON.parse(data.content) : data.content,
     };
 }

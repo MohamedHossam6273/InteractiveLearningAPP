@@ -1,5 +1,4 @@
 
-
 import { RecommendationList } from "@/components/recommendation-list";
 import { getStories } from '@/lib/stories';
 
@@ -14,7 +13,7 @@ export default async function RecommendationsPage() {
   const recommendations = stories.map(story => ({
     id: story.id,
     title: story.title,
-    description: "ابدأ القصة لمعرفة المزيد.", // Placeholder description
+    description: story.subtitle, // Use subtitle for the description
     learningConcepts: "تفاعلية, قائمة على الاختيار", // Placeholder
     difficulty: 'medium', // Placeholder
   }));

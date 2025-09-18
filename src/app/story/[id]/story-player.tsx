@@ -9,12 +9,13 @@ import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function StoryPlayer({ story }: { story: Story }) {
-  const [currentNodeId, setCurrentNodeId] = useState(story.nodes.nodes[0].node_id);
+  const storyContent = story.content;
+  const [currentNodeId, setCurrentNodeId] = useState(storyContent.nodes[0].node_id);
 
-  const currentNode = story.nodes.nodes.find((node) => node.node_id === currentNodeId);
+  const currentNode = storyContent.nodes.find((node) => node.node_id === currentNodeId);
   
-  // Use story_id from the nested nodes object for image lookup
-  const image = PlaceHolderImages.find(img => story.nodes.story_id.includes(img.id.split('-')[0]) && currentNode?.image_url.includes(img.id.split('-')[1]));
+  // Use story_id from the nested content object for image lookup
+  const image = PlaceHolderImages.find(img => storyContent.story_id.includes(img.id.split('-')[0]) && currentNode?.image_url.includes(img.id.split('-')[1]));
   const imageUrl = image?.imageUrl ?? "https://picsum.photos/seed/default/1920/1080";
   const imageHint = image?.imageHint ?? "story image";
 
@@ -65,7 +66,7 @@ export function StoryPlayer({ story }: { story: Story }) {
                 <Button asChild>
                     <Link href="/recommendations">ابحث عن قصة جديدة</Link>
                 </Button>
-                <Button variant="outline" onClick={() => setCurrentNodeId(story.nodes.nodes[0].node_id)}>
+                <Button variant="outline" onClick={() => setCurrentNodeId(storyContent.nodes[0].node_id)}>
                     ابدأ هذه القصة من جديد
                 </Button>
             </div>

@@ -11,14 +11,17 @@ export type StoryNode = {
   choices?: StoryChoice[];
 };
 
+export type StoryContent = {
+  story_id: string;
+  languages: string[];
+  nodes: StoryNode[];
+};
+
 export type Story = {
   id: number;
-  slug: string;
   title: string;
-  description: string;
-  nodes: {
-    story_id: string;
-    languages: string[];
-    nodes: StoryNode[];
-  };
+  subtitle: string;
+  content: StoryContent;
+  start?: any; // You can define a more specific type if you know what `start` contains
+  created_at: string;
 };
