@@ -1,14 +1,16 @@
 import { RecommendationList } from "@/components/recommendation-list";
-import { stories } from '@/lib/stories';
-import type { PersonalizedStoryRecommendationsOutput } from '@/ai/flows/personalized-story-recommendations';
+import type { Story } from '@/lib/types';
+import { getStories } from '@/lib/stories';
 
 export const metadata = {
     title: "كل القصص | اختر وتعلم",
     description: "تصفح جميع القصص المتاحة.",
 };
 
-export default function RecommendationsPage() {
-  const recommendations: PersonalizedStoryRecommendationsOutput['storyRecommendations'] = stories.map(story => ({
+export default async function RecommendationsPage() {
+  const stories: Story[] = await getStories();
+
+  const recommendations = stories.map(story => ({
     title: story.title,
     description: story.description,
     learningConcepts: "تفاعلية, قائمة على الاختيار", // Placeholder
