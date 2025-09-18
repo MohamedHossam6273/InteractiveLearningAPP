@@ -1,7 +1,6 @@
 
 
 import { RecommendationList } from "@/components/recommendation-list";
-import type { Story } from '@/lib/types';
 import { getStories } from '@/lib/stories';
 
 export const metadata = {
@@ -13,6 +12,7 @@ export default async function RecommendationsPage() {
   const stories = await getStories();
 
   const recommendations = stories.map(story => ({
+    id: story.id,
     title: story.title,
     slug: story.slug,
     description: story.description,
@@ -33,4 +33,3 @@ export default async function RecommendationsPage() {
     </div>
   );
 }
-

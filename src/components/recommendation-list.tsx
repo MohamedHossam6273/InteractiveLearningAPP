@@ -7,6 +7,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Button } from './ui/button';
 
 type Recommendation = {
+  id: number;
   title: string;
   slug: string; 
   description: string;
@@ -57,7 +58,7 @@ export function RecommendationList({ recommendations }: RecommendationListProps)
           </CardContent>
           <CardFooter>
             <Button asChild className="w-full">
-              <Link href={`/story/${rec.slug}`}>
+              <Link href={`/story/${rec.id}`}>
                 ابدأ القراءة <ArrowLeft className="mr-2 h-4 w-4" />
               </Link>
             </Button>
@@ -67,4 +68,3 @@ export function RecommendationList({ recommendations }: RecommendationListProps)
     </div>
   );
 }
-

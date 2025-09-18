@@ -107,4 +107,3 @@ export function StoryPlayer({ story }: { story: Story }) {
     </div>
   );
 }
-
