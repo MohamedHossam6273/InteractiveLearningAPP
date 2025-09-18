@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import type { StoryNode, StoryChoice, Story } from '@/lib/types';
+import type { Story, StoryChoice } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -12,7 +12,8 @@ export function StoryPlayer({ story }: { story: Story }) {
   const [currentNodeId, setCurrentNodeId] = useState(story.nodes.nodes[0].node_id);
 
   const currentNode = story.nodes.nodes.find((node) => node.node_id === currentNodeId);
-  const image = PlaceHolderImages.find(img => story.slug.includes(img.id.split('-')[0]) && currentNode?.image_url.includes(img.id.split('-')[1]));
+  // Use story_id instead of slug for image lookup
+  const image = PlaceHolderImages.find(img => story.story_id.includes(img.id.split('-')[0]) && currentNode?.image_url.includes(img.id.split('-')[1]));
   const imageUrl = image?.imageUrl ?? "https://picsum.photos/seed/default/1920/1080";
   const imageHint = image?.imageHint ?? "story image";
 

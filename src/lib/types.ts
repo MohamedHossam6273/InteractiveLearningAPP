@@ -12,7 +12,7 @@ export type StoryNode = {
 };
 
 export type Story = {
-  slug: string;
+  story_id: string;
   title: string;
   description: string;
   nodes: {
