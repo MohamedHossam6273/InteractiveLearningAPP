@@ -9,7 +9,7 @@ import { Button } from './ui/button';
 type Recommendation = {
   id: number;
   title: string;
-  description: string;
+  description?: string;
   learningConcepts: string;
   difficulty: string;
 }
@@ -37,7 +37,7 @@ export function RecommendationList({ recommendations }: RecommendationListProps)
         <Card key={index} className="flex flex-col hover:shadow-lg transition-shadow duration-300">
           <CardHeader>
             <CardTitle>{rec.title}</CardTitle>
-            <CardDescription>{rec.description}</CardDescription>
+            {rec.description && <CardDescription>{rec.description}</CardDescription>}
           </CardHeader>
           <CardContent className="flex-grow space-y-4">
             <div>

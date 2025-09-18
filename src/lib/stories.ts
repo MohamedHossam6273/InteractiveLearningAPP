@@ -2,9 +2,9 @@
 import { createClient } from '@/lib/supabase/server';
 import type { Story } from './types';
 
-export const getStories = async (): Promise<Omit<Story, 'nodes' | 'slug'>[]> => {
+export const getStories = async (): Promise<Omit<Story, 'nodes' | 'story_id' | 'description'>[]> => {
     const supabase = createClient();
-    const { data: stories, error } = await supabase.from('stories').select('id, title, description');
+    const { data: stories, error } = await supabase.from('stories').select('id, title');
 
     if (error) {
         console.error('Error fetching stories:', JSON.stringify(error, null, 2));
