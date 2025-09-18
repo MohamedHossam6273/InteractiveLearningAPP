@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export default function StoryPage({ params }: { params: { slug: string } }) {
-  const story = getStoryBySlug(params.slug);
+  const story = useMemo(() => getStoryBySlug(params.slug), [params.slug]);
   const [currentNodeId, setCurrentNodeId] = useState(1);
 
   const currentNode = useMemo(() => {
