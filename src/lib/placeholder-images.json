@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "choicelearn-hero",
+      "description": "A hero image for the Choice Learn landing page.",
+      "imageUrl": "https://picsum.photos/seed/choicelearn-hero/1920/1080",
+      "imageHint": "library books"
+    },
+    {
+      "id": "phoenix-project-1",
+      "description": "A bustling corporate office setting the scene for a new project.",
+      "imageUrl": "https://picsum.photos/seed/phoenix-project-1/1920/1080",
+      "imageHint": "corporate office"
+    },
+    {
+      "id": "phoenix-project-2",
+      "description": "A stressed manager looking at a complex project plan.",
+      "imageUrl": "https://picsum.photos/seed/phoenix-project-2/1920/1080",
+      "imageHint": "stressed manager"
+    },
+    {
+      "id": "phoenix-project-3",
+      "description": "A team engaged in a serious meeting in a conference room.",
+      "imageUrl": "https://picsum.photos/seed/phoenix-project-3/1920/1080",
+      "imageHint": "team meeting"
+    },
+    {
+      "id": "phoenix-project-4",
+      "description": "A quiet, empty office late at night, suggesting long hours.",
+      "imageUrl": "https://picsum.photos/seed/phoenix-project-4/1920/1080",
+      "imageHint": "empty office"
+    },
+    {
+      "id": "phoenix-project-5",
+      "description": "A diverse team celebrating a success in the office.",
+      "imageUrl": "https://picsum.photos/seed/phoenix-project-5/1920/1080",
+      "imageHint": "successful team"
+    }
+  ]
 }
