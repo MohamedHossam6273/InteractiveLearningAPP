@@ -1,0 +1,12 @@
+{
+  "stories": [
+    {
+      "id": "lean_startup_quest",
+      "title": "The Lean Startup Quest",
+      "subtitle": "An interactive story about building a business from the ground up using lean principles.",
+      "cover_image_url": "https://picsum.photos/seed/lean-startup-cover/600/400",
+      "difficulty": "medium",
+      "learning_concepts": "MVP, Pivot, Innovation Accounting"
+    }
+  ]
+}
