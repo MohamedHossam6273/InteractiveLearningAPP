@@ -1,19 +1,15 @@
 import type { Story, StoryListItem } from './types';
-
-// The base URL for the stories on GitHub Pages.
-// This assumes the stories are in a 'stories' directory in the public folder.
-const BASE_URL = '/stories'; 
+import fs from 'fs/promises';
+import path from 'path';
 
 /**
- * Fetches the list of all available stories from story-list.json.
+ * Fetches the list of all available stories from the local story-list.json file.
  */
 export const getStories = async (): Promise<StoryListItem[]> => {
   try {
-    const response = await fetch(`${BASE_URL}/story-list.json`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const storyList = await response.json();
+    const filePath = path.join(process.cwd(), 'public', 'stories', 'story-list.json');
+    const fileContent = await fs.readFile(filePath, 'utf-8');
+    const storyList = JSON.parse(fileContent);
     return storyList.stories;
   } catch (error) {
     console.error('Error fetching story list:', error);
@@ -22,17 +18,15 @@ export const getStories = async (): Promise<StoryListItem[]> => {
 };
 
 /**
- * Fetches the content of a single story by its ID.
- * The ID corresponds to the folder name in the /stories directory.
+ * Fetches the content of a single story by its ID from its local story.json file.
+ * The ID corresponds to the folder name in the /public/stories directory.
  * @param id - The ID of the story to fetch.
  */
 export const getStoryById = async (id: string): Promise<Story | null> => {
   try {
-    const response = await fetch(`${BASE_URL}/${id}/story.json`);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const storyContent: Story = await response.json();
+    const filePath = path.join(process.cwd(), 'public', 'stories', id, 'story.json');
+    const fileContent = await fs.readFile(filePath, 'utf-8');
+    const storyContent: Story = JSON.parse(fileContent);
     
     // Add the id to the story object so we can use it for image paths.
     return { ...storyContent, id };
