@@ -2,14 +2,16 @@
 
 import { useState, useMemo } from 'react';
 import Image from 'next/image';
-import { notFound } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import { getStoryBySlug } from '@/lib/stories';
 import type { StoryNode, StoryChoice } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-export default function StoryPage({ params }: { params: { slug: string } }) {
-  const story = useMemo(() => getStoryBySlug(params.slug), [params.slug]);
+export default function StoryPage() {
+  const params = useParams();
+  const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
+  const story = useMemo(() => getStoryBySlug(slug), [slug]);
   const [currentNodeId, setCurrentNodeId] = useState(1);
 
   const currentNode = useMemo(() => {
