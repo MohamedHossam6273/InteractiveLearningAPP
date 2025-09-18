@@ -1,7 +1,6 @@
 import { RecommendationList } from "@/components/recommendation-list";
 import { stories } from '@/lib/stories';
 import type { PersonalizedStoryRecommendationsOutput } from '@/ai/flows/personalized-story-recommendations';
-import { slugify } from "@/lib/utils";
 
 export const metadata = {
     title: "All Stories | Choice Learn",
