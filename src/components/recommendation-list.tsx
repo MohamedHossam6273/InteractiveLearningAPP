@@ -9,7 +9,6 @@ import { Button } from './ui/button';
 type Recommendation = {
   id: number;
   title: string;
-  slug: string; 
   description: string;
   learningConcepts: string;
   difficulty: string;

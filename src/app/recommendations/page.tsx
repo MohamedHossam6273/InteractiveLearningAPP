@@ -14,7 +14,6 @@ export default async function RecommendationsPage() {
   const recommendations = stories.map(story => ({
     id: story.id,
     title: story.title,
-    slug: story.slug,
     description: story.description,
     learningConcepts: "تفاعلية, قائمة على الاختيار", // Placeholder
     difficulty: 'medium', // Placeholder
