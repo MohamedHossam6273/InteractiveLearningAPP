@@ -2,16 +2,30 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import type { Story, StoryChoice, StoryNode } from '@/lib/types';
+import type { Story, StoryChoice } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { event } from '@/lib/gtag';
+import { getAuth } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { app } from '@/lib/firebase';
+import { checkAndUpdateStreak, completeStory, updateUserXP, updateStoryProgress } from '@/lib/user-progress';
+
+const XP_PER_CHOICE = 10;
+const XP_PER_COMPLETION = 50;
 
 export function StoryPlayer({ story }: { story: Story }) {
+  const auth = getAuth(app);
+  const [user] = useAuthState(auth);
+
   const [currentNodeId, setCurrentNodeId] = useState(story.nodes[0].node_id);
   const [startTime, setStartTime] = useState(0);
 
   useEffect(() => {
+    if (user) {
+        checkAndUpdateStreak(user.uid);
+    }
+    
     event({
       action: 'story_started',
       params: {
@@ -44,7 +58,7 @@ export function StoryPlayer({ story }: { story: Story }) {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [story.id, story.title]);
+  }, [story.id, story.title, user]);
 
 
   const currentNode = story.nodes.find((node) => node.node_id === currentNodeId);
@@ -75,6 +89,16 @@ export function StoryPlayer({ story }: { story: Story }) {
             next_node_id: choice.next_node_id,
         }
     });
+
+    if (user) {
+      updateUserXP(user.uid, XP_PER_CHOICE);
+      const nextNodeIndex = story.nodes.findIndex(n => n.node_id === choice.next_node_id);
+      if (nextNodeIndex !== -1) {
+        const progress = (nextNodeIndex + 1) / story.nodes.length;
+        updateStoryProgress(user.uid, story.id, progress);
+      }
+    }
+
 
     if (!choice.next_node_id) {
         setCurrentNodeId('end');
@@ -109,6 +133,9 @@ export function StoryPlayer({ story }: { story: Story }) {
                 total_nodes: story.nodes.length,
             }
         });
+        if (user) {
+          completeStory(user.uid, story.id, XP_PER_COMPLETION);
+        }
         setStartTime(0); // Prevent re-firing
     }
      return (
@@ -134,7 +161,7 @@ export function StoryPlayer({ story }: { story: Story }) {
                 </Button>
             </div>
             <div className='flex flex-col gap-4 mt-8'>
-                <h2 className="text-xl font-bold text-center">النهاية</h2>
+                <h2 className="text-xl font-bold text-center text-white">النهاية</h2>
                 <Button asChild>
                     <Link href="/recommendations">ابحث عن قصة جديدة</Link>
                 </Button>
@@ -169,7 +196,7 @@ export function StoryPlayer({ story }: { story: Story }) {
                     key={index}
                     onClick={() => handleChoice(choice)}
                     variant="outline"
-                    className="bg-background/20 hover:bg-accent hover:text-accent-foreground justify-start text-right w-full"
+                    className="bg-background/20 hover:bg-accent hover:text-accent-foreground justify-start text-right w-full text-white hover:text-accent-foreground"
                 >
                     {choice.choice_text_ar}
                 </Button>
