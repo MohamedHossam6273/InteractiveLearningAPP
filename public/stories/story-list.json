@@ -3,30 +3,10 @@
     {
       "id": "lean_startup_quest",
       "title": "The Lean Startup Quest",
-      "subtitle": "An interactive story about building a business from the ground up using lean principles.",
-      "cover_image_url": "https://picsum.photos/seed/lean-startup-cover/600/400",
+      "subtitle": "An interactive journey through the core principles of building a business with the Lean Startup methodology. Learn about MVPs, pivoting, and validated learning.",
+      "cover_image_url": "https://picsum.photos/seed/lean-startup-cover/600/800",
       "difficulty": "medium",
-      "learning_concepts": "MVP, Pivot, Innovation Accounting"
-    },
-
-
-    {
-      "id": "win_friends_corporate_drama",
-      "title": "introvert_quest",
-      "subtitle": "An interactive story about an introvert trying to have friends.",
-      "cover_image_url": "/stories/introvert_quest/introvert.jpg",
-      "difficulty": "medium",
-      "learning_concepts": "introvert, building friends"
-    },
-
-
-    {
-      "id": "atomic_habits_detective_case",
-      "title": "Detective_case",
-      "subtitle": "An interactive story about a detective trying to solve a complicated case.",
-      "cover_image_url": "/stories/detective_case/cover.jpg",
-      "difficulty": "medium",
-      "learning_concepts": "introvert, building friends"
+      "learning_concepts": "Lean Startup, MVP, Pivot, Innovation Accounting"
     }
   ]
 }
