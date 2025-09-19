@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import Image from 'next/image';
 import type { Story, StoryChoice } from '@/lib/types';
 import { Button } from '@/components/ui/button';
@@ -61,17 +61,55 @@ export function StoryPlayer({ story }: { story: Story }) {
   
   const currentNode = story.nodes.find((node) => node.node_id === currentNodeId);
   const currentNodeIndex = story.nodes.findIndex((node) => node.node_id === currentNodeId);
+  const isEndingNode = !currentNode?.choices || currentNode.choices.length === 0;
 
   const storyProgress = useMemo(() => {
     if (story.nodes.length <= 1) return 100;
+    if (isEndingNode) return 100;
     const progress = (currentNodeIndex / (story.nodes.length - 1)) * 100;
     return Math.min(progress, 100);
-  }, [currentNodeIndex, story.nodes.length]);
-
+  }, [currentNodeIndex, story.nodes.length, isEndingNode]);
+  
+  const handleStoryCompletion = useCallback(() => {
+     if (startTime > 0) {
+        const duration = Math.round((Date.now() - startTime) / 1000);
+        event({
+            action: 'story_completed',
+            params: {
+                story_id: story.id,
+                story_title: story.title,
+                duration: duration,
+                total_nodes: story.nodes.length,
+            }
+        });
+        setStartTime(0); // Prevent re-firing
+        
+        completeStory(story.id);
+        const completionXp = 100;
+        addXp(completionXp);
+        toast({
+            title: "قصة مكتملة!",
+            description: (
+                <div className="flex items-center">
+                    <Flame className="ml-2 h-4 w-4 text-orange-500" />
+                    +{completionXp} نقاط خبرة
+                </div>
+            ),
+        });
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [startTime, story.id, story.title, story.nodes.length, completeStory, addXp]);
+  
   useEffect(() => {
     updateStoryProgress(story.id, storyProgress);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [story.id, storyProgress]);
+
+  useEffect(() => {
+    if (isEndingNode || currentNodeId === 'end') {
+        handleStoryCompletion();
+    }
+  }, [currentNodeId, isEndingNode, handleStoryCompletion]);
 
 
   const imageUrl = currentNode?.image_url ? `/stories/${story.id}/${currentNode.image_url}` : "https://picsum.photos/seed/story-placeholder/1920/1080";
@@ -129,43 +167,8 @@ export function StoryPlayer({ story }: { story: Story }) {
     });
     window.open(url, '_blank');
   };
-  
-  const handleStoryCompletion = () => {
-     if (startTime > 0) {
-        const duration = Math.round((Date.now() - startTime) / 1000);
-        event({
-            action: 'story_completed',
-            params: {
-                story_id: story.id,
-                story_title: story.title,
-                duration: duration,
-                total_nodes: story.nodes.length,
-            }
-        });
-        setStartTime(0); // Prevent re-firing
-        
-        completeStory(story.id);
-        const completionXp = 100;
-        addXp(completionXp);
-        toast({
-            title: "قصة مكتملة!",
-            description: (
-                <div className="flex items-center">
-                    <Flame className="ml-2 h-4 w-4 text-orange-500" />
-                    +{completionXp} نقاط خبرة
-                </div>
-            ),
-        });
-    }
-  }
-
-  const isEndingNode = !currentNode.choices || currentNode.choices.length === 0;
 
   if (currentNodeId === 'end' || isEndingNode) {
-    if (startTime > 0) {
-      handleStoryCompletion();
-    }
-    
      return (
       <div className="relative min-h-[calc(100vh-65px)] flex items-center justify-center p-4">
         <Image
