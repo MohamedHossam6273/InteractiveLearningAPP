@@ -44,6 +44,7 @@ export function RecommendationList({ recommendations }: RecommendationListProps)
                     alt={`Cover image for ${rec.title}`}
                     fill
                     className="object-cover"
+                    priority
                   />
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <Button variant="secondary">
