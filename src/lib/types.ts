@@ -13,6 +13,7 @@ export type StoryNode = {
 
 export type Story = {
   id: string; // The story's folder name, added at fetch time
+  title: string; // Added from the story list
   story_id: string;
   languages: string[];
   nodes: StoryNode[];

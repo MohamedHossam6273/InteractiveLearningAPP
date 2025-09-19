@@ -2,12 +2,14 @@ import type { Story, StoryListItem } from './types';
 import fs from 'fs/promises';
 import path from 'path';
 
+const storiesDirectory = path.join(process.cwd(), 'public', 'stories');
+
 /**
  * Fetches the list of all available stories from the local story-list.json file.
  */
 export const getStories = async (): Promise<StoryListItem[]> => {
   try {
-    const filePath = path.join(process.cwd(), 'public', 'stories', 'story-list.json');
+    const filePath = path.join(storiesDirectory, 'story-list.json');
     const fileContent = await fs.readFile(filePath, 'utf-8');
     const storyList = JSON.parse(fileContent);
     return storyList.stories;
@@ -24,12 +26,21 @@ export const getStories = async (): Promise<StoryListItem[]> => {
  */
 export const getStoryById = async (id: string): Promise<Story | null> => {
   try {
-    const filePath = path.join(process.cwd(), 'public', 'stories', id, 'story.json');
+    // First, get the list to find the story's title
+    const stories = await getStories();
+    const storyInfo = stories.find(story => story.id === id);
+
+    if (!storyInfo) {
+      console.error(`Story info not found for id (${id}) in story-list.json`);
+      return null;
+    }
+
+    const filePath = path.join(storiesDirectory, id, 'story.json');
     const fileContent = await fs.readFile(filePath, 'utf-8');
-    const storyContent: Story = JSON.parse(fileContent);
+    const storyContent: Omit<Story, 'id' | 'title'> = JSON.parse(fileContent);
     
-    // Add the id to the story object so we can use it for image paths.
-    return { ...storyContent, id };
+    // Add the id and title to the story object.
+    return { ...storyContent, id, title: storyInfo.title };
 
   } catch (error) {
     console.error(`Error fetching story by id (${id}):`, error);
