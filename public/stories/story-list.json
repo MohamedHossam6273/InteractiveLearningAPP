@@ -7,6 +7,26 @@
       "cover_image_url": "https://picsum.photos/seed/lean-startup-cover/600/400",
       "difficulty": "medium",
       "learning_concepts": "MVP, Pivot, Innovation Accounting"
+    },
+
+
+    {
+      "id": "win_friends_corporate_drama",
+      "title": "introvert_quest",
+      "subtitle": "An interactive story about an introvert trying to have friends.",
+      "cover_image_url": "",
+      "difficulty": "medium",
+      "learning_concepts": "introvert, building friends"
+    },
+
+
+    {
+      "id": "atomic_habits_detective_case",
+      "title": "Detective_case",
+      "subtitle": "An interactive story about a detective trying to solve a complicated case.",
+      "cover_image_url": "",
+      "difficulty": "medium",
+      "learning_concepts": "introvert, building friends"
     }
   ]
 }
