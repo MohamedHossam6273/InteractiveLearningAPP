@@ -14,7 +14,7 @@
       "id": "win_friends_corporate_drama",
       "title": "introvert_quest",
       "subtitle": "An interactive story about an introvert trying to have friends.",
-      "cover_image_url": "/stories/lean_startup_quest/introvert.jpg",
+      "cover_image_url": "/stories/introvert_quest/introvert.jpg",
       "difficulty": "medium",
       "learning_concepts": "introvert, building friends"
     },
@@ -24,7 +24,7 @@
       "id": "atomic_habits_detective_case",
       "title": "Detective_case",
       "subtitle": "An interactive story about a detective trying to solve a complicated case.",
-      "cover_image_url": "",
+      "cover_image_url": "/stories/detective_case/cover.jpg",
       "difficulty": "medium",
       "learning_concepts": "introvert, building friends"
     }
