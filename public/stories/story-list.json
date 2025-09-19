@@ -7,6 +7,24 @@
       "cover_image_url": "https://picsum.photos/seed/lean-startup-cover/600/800",
       "difficulty": "medium",
       "learning_concepts": "Lean Startup, MVP, Pivot, Innovation Accounting"
-    }
+    },
+
+    {
+      "id": "atomic_habits_detective_case",
+      "title": "Detective case",
+      "subtitle": "An interactive journey with a detictive trying to solve a mysterios case, learning about power of small achievemts along the way.",
+      "cover_image_url": "/stories/detective_case/cover.jpg",
+      "difficulty": "medium",
+      "learning_concepts": "habit building, organizing time, Pivot, Innovation Accounting"
+    },
+
+    {
+      "id": "win_friends_corporate_drama",
+      "title": "introvert quest",
+      "subtitle": "An interactive journey with an introvert who tries to have friends.",
+      "cover_image_url": "/stories/introvert_quest/introvert.jpg",
+      "difficulty": "medium",
+      "learning_concepts": "making friends, introvert"
+    }    
   ]
 }

@@ -35,7 +35,8 @@ export const getStoryById = async (id: string): Promise<Story | null> => {
       return null;
     }
 
-    const filePath = path.join(storiesDirectory, id, 'story.json');
+    const storyFileName = 'story.json'.trim();
+    const filePath = path.join(storiesDirectory, id, storyFileName);
     const fileContent = await fs.readFile(filePath, 'utf-8');
     const storyContent: Omit<Story, 'id' | 'title'> = JSON.parse(fileContent);
     
