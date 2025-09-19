@@ -21,11 +21,13 @@ export default async function RecommendationsPage() {
   }));
 
   return (
-    <div className="container mx-auto max-w-5xl px-4 py-12 md:py-20">
-      <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold font-headline mb-4">كل القصص</h1>
-        <p className="text-lg text-muted-foreground">
-          تصفح مكتبتنا من القصص التفاعلية وابدأ مغامرة جديدة.
+    <div className="container mx-auto px-4 py-12 md:py-20">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold font-headline mb-3 text-primary">
+          مكتبة القصص
+        </h1>
+        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+          تصفح مكتبتنا من القصص التفاعلية. كل قصة مصممة لتعليمك مهارة جديدة بطريقة ممتعة.
         </p>
       </div>
       
