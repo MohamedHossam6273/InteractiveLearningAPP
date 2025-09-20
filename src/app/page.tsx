@@ -2,8 +2,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
+import { RotatingText } from '@/components/rotating-text';
 
 export default function Home() {
+  const rotatingTaglines = [
+    "كل قصة هي خطوة نحو نسخة أفضل منك. اقرأ لتعيش، وتعلم لتكتمل.",
+    "ماذا لو كانت أهم مهارة يمكن أن تتعلمها مخبأة داخل قصة لم تُروَ بعد؟ اقرأ، عش، وتعلم.",
+    "انسَ طريقة التعلم القديمة. هنا، تبدأ رحلة المعرفة حيث تنتهي الحكاية، وكل قرار هو درس جديد.",
+  ];
+
   return (
     <section className="relative h-[calc(100vh-65px)] flex items-center justify-center">
       <Image
@@ -23,9 +30,9 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl font-bold font-headline mb-4 text-primary">
             مسار
           </h1>
-          <p className="text-lg md:text-2xl mb-8 max-w-3xl mx-auto text-foreground/80">
-            هل سئمت من قراءة الكتب غير الخيالية التي لا يمكنك تذكرها؟ تعلم مفاهيم تغير حياتك من خلال قصص خيالية تفاعلية وجذابة.
-          </p>
+          <div className="text-lg md:text-2xl mb-8 max-w-3xl mx-auto text-foreground/80 h-24 flex items-center justify-center">
+            <RotatingText texts={rotatingTaglines} />
+          </div>
         </div>
         <div
           className="animate-fade-in-up"
