@@ -9,7 +9,7 @@ import Script from 'next/script';
 const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
-  title: 'اختر وتعلم',
+  title: 'مسار',
   description: 'اقرأ قصة. تعلم مهارة.',
 };
 

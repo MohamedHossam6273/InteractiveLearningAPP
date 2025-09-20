@@ -4,7 +4,7 @@ import { getStories } from '@/lib/stories';
 import type { StoryListItem } from "@/lib/types";
 
 export const metadata = {
-    title: "كل القصص | اختر وتعلم",
+    title: "كل القصص | مسار",
     description: "تصفح جميع القصص المتاحة.",
 };
 

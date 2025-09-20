@@ -21,7 +21,7 @@ export default function Home() {
           style={{ animationFillMode: 'backwards' }}
         >
           <h1 className="text-4xl md:text-6xl font-bold font-headline mb-4 text-primary">
-            اختر وتعلم
+            مسار
           </h1>
           <p className="text-lg md:text-2xl mb-8 max-w-3xl mx-auto text-foreground/80">
             هل سئمت من قراءة الكتب غير الخيالية التي لا يمكنك تذكرها؟ تعلم مفاهيم تغير حياتك من خلال قصص خيالية تفاعلية وجذابة.
@@ -33,7 +33,7 @@ export default function Home() {
         >
           <Button asChild size="lg">
             <Link href="/recommendations">
-              ابحث عن قصتك الأولى
+              تعالى نقرا حكاية... ونكتسب مهارة
               <ArrowLeft className="mr-2 h-5 w-5" />
             </Link>
           </Button>
