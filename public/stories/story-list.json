@@ -1,18 +1,37 @@
 {
   "stories": [
     {
+      "id": "win_friends_corporate_drama",
+      "title": "شبكة النفوذ",
+      "subtitle": "موظف جديد طموح يدخل عالماً مليئاً بالسياسة الداخلية والصراعات الخفية. لتمرير مشروعه، عليه أن يتعلم كيف يكسب القلوب قبل أن يكسب الموافقات ",
+      "cover_image_url": "/stories/win_friends_corporate_drama/introvert.jpg",
+      "difficulty": "easy",
+      "learning_concepts": "MVP, Build-Measure-Learn, Pivot"
+    },
+
+    {
+      "id": "exodus_habitus",
+      "title": "منفي النجوم",
+      "subtitle": "قصة تفاعلية على متن سفينة فضائية هاربة من الأرض، حيث تحدد قراراتك مصير آخر ما تبقى من البشرية وتعلمك كيف تعيش بكرامة، شجاعة، وأمل. ",
+      "cover_image_url": "/stories/exodus_habitus/cover.jpg",
+      "difficulty": "متوسط",
+      "learning_concepts": "البحث عن الهدف, الانضباط, النمو بشكل تدريجي"
+    },
+    
+    {
       "id": "lean_startup_quest",
-      "title": "رحلة الشركة الناشئة المرنة",
-      "subtitle": "تعلم مبادئ 'The Lean Startup' من خلال مغامرة تفاعلية.",
+      "title": "قلب الانصهار: رحلة البقاء في هافنوود ",
+      "subtitle": "في عالم ما بعد الكارثة، يكتشف ثلاثة أصدقاء نواة اندماج صغيرة قد تنقذ مجتمعهم من شتاء قاتل. لكن النجاح يعتمد على قراراتهم: هل يبنون مشروعًا ضخمًا من البداية أم يبدأون بخطوة صغيرة؟ ",
       "cover_image_url": "/stories/lean_startup_quest/cover.jpg",
       "difficulty": "easy",
       "learning_concepts": "MVP, Build-Measure-Learn, Pivot"
     },
+    
     {
-      "id": "atomic_habits_journey",
-      "title": "مسار العادات الذرية",
-      "subtitle": "اكتشف قوة التغييرات الصغيرة لبناء عادات استثنائية.",
-      "cover_image_url": "https://picsum.photos/seed/atomic-habits/400/500",
+      "id": "atomic_habits_detective_case",
+      "title": "ألغاز العادات الصغيرة  ",
+      "subtitle": "محقق خاص ساخر يتولى قضية تبدو تافهة: قطعة فنية مفقودة. مع كل خطوة، يكتشف أن الحل لا يأتي من النظريات الكبرى بل من الأفعال الصغيرة المتكررة التي تكشف خيوط الحقيقة.",
+      "cover_image_url": "/stories/atomic_habits_detective_case/cover.jpg",
       "difficulty": "medium",
       "learning_concepts": "Habit Stacking, Identity Change, Two-Minute Rule"
     }
