@@ -1,12 +1,20 @@
 {
-    "stories": [
-        {
-            "id": "lean_startup_quest",
-            "title": "The Lean Startup Quest",
-            "subtitle": "An aspiring entrepreneur learns to build a business by listening to customers.",
-            "cover_image_url": "https://picsum.photos/seed/lean-startup-cover/600/800",
-            "difficulty": "easy",
-            "learning_concepts": "MVP, Customer Feedback, Pivoting"
-        }
-    ]
+  "stories": [
+    {
+      "id": "lean_startup_quest",
+      "title": "رحلة الشركة الناشئة المرنة",
+      "subtitle": "تعلم مبادئ 'The Lean Startup' من خلال مغامرة تفاعلية.",
+      "cover_image_url": "/stories/lean_startup_quest/cover.jpg",
+      "difficulty": "easy",
+      "learning_concepts": "MVP, Build-Measure-Learn, Pivot"
+    },
+    {
+      "id": "atomic_habits_journey",
+      "title": "مسار العادات الذرية",
+      "subtitle": "اكتشف قوة التغييرات الصغيرة لبناء عادات استثنائية.",
+      "cover_image_url": "https://picsum.photos/seed/atomic-habits/400/500",
+      "difficulty": "medium",
+      "learning_concepts": "Habit Stacking, Identity Change, Two-Minute Rule"
+    }
+  ]
 }
