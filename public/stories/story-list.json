@@ -1,39 +1,12 @@
 {
-  "stories": [
-    {
-      "id": "lean_startup_quest",
-      "title": "The Lean Startup Quest",
-      "subtitle": "An entrepreneur's journey of building a business with the lean startup methodology.",
-      "cover_image_url": "https://picsum.photos/seed/lean-startup-cover/800/600",
-      "difficulty": "easy",
-      "learning_concepts": "MVP, Build-Measure-Learn, Pivot"
-    },
-
-    {
-      "id": "atomic_habits_detective_case",
-      "title": "ألغاز العادات الصغيرة",
-      "subtitle":"محقق خاص ساخر يتولى قضية تبدو تافهة: قطعة فنية مفقودة. مع كل خطوة، يكتشف أن الحل لا يأتي من النظريات الكبرى بل من الأفعال الصغيرة المتكررة التي تكشف خيوط الحقيقة",
-      "cover_image_url": "/stories/atomic_habits_detective_case/story.json",
-      "difficulty": "easy",
-      "learning_concepts": ""
-    },
-    
-    {
-      "id": "exodus_habitus",
-      "title": "منفي النجوم",
-      "subtitle": "قصة تفاعلية على متن سفينة فضائية هاربة من الأرض، حيث تحدد قراراتك مصير آخر ما تبقى من البشرية وتعلمك كيف تعيش بكرامة، شجاعة، وأمل.",
-      "cover_image_url": "/stories/exodus_habitus/cover.jpg",
-      "difficulty": "easy",
-      "learning_concepts": ""
-    },
-    
-    {
-      "id": "win_friends_corporate_drama",
-      "title": "شبكة النفوذ",
-      "subtitle": "موظف جديد طموح يدخل عالماً مليئاً بالسياسة الداخلية والصراعات الخفية. لتمرير مشروعه، عليه أن يتعلم كيف يكسب القلوب قبل أن يكسب الموافقات.",
-      "cover_image_url": "/stories/win_friends_corporate_drama/introvert.jpg",
-      "difficulty": "easy",
-      "learning_concepts": ""
-    }    
-  ]
+    "stories": [
+        {
+            "id": "lean_startup_quest",
+            "title": "The Lean Startup Quest",
+            "subtitle": "An aspiring entrepreneur learns to build a business by listening to customers.",
+            "cover_image_url": "https://picsum.photos/seed/lean-startup-cover/600/800",
+            "difficulty": "easy",
+            "learning_concepts": "MVP, Customer Feedback, Pivoting"
+        }
+    ]
 }

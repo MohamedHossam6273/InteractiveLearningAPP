@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getStories, getStoryById } from '@/lib/stories';
+import { getStoryById } from '@/lib/stories';
 import { StoryPlayer } from './story-player';
 
 // This function is no longer needed for dynamic hosting, so it is removed.
