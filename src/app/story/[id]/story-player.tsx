@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { event } from '@/lib/gtag';
 import { useUserProgress } from '@/hooks/use-user-progress';
 import { Progress } from '@/components/ui/progress';
-import { toast } from '@/hooks/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import { Flame, Star } from 'lucide-react';
 
 export function StoryPlayer({ story }: { story: Story }) {
@@ -20,6 +20,7 @@ export function StoryPlayer({ story }: { story: Story }) {
     checkAndUpdateStreak 
   } = useUserProgress();
   
+  const { toast } = useToast();
   const [currentNodeId, setCurrentNodeId] = useState(story.nodes[0].node_id);
   const [startTime, setStartTime] = useState(0);
 
@@ -98,7 +99,7 @@ export function StoryPlayer({ story }: { story: Story }) {
         });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [startTime, story.id, story.title, story.nodes.length, completeStory, addXp]);
+  }, [startTime, story.id, story.title, story.nodes.length, completeStory, addXp, toast]);
   
   useEffect(() => {
     updateStoryProgress(story.id, storyProgress);
@@ -111,8 +112,7 @@ export function StoryPlayer({ story }: { story: Story }) {
     }
   }, [currentNodeId, isEndingNode, handleStoryCompletion]);
 
-
-  const imageUrl = currentNode?.image_url ? `/stories/${story.id}/${currentNode.image_url}` : "https://picsum.photos/seed/story-placeholder/1920/1080";
+  const imageUrl = currentNode?.image_url ? `/stories/${story.id}/${currentNode.image_url}`.replace('.png', '').replace('.jpg', '') : "https://picsum.photos/seed/story-placeholder/1920/1080";
   const imageHint = currentNode?.text_ar.substring(0, 30) || "story image";
 
   if (!currentNode) {
@@ -172,7 +172,7 @@ export function StoryPlayer({ story }: { story: Story }) {
      return (
       <div className="relative min-h-[calc(100vh-65px)] flex items-center justify-center p-4">
         <Image
-            src={imageUrl}
+            src={`https://picsum.photos/seed/${story.id}-${currentNode.node_id}/1920/1080`}
             alt={imageHint}
             data-ai-hint={imageHint}
             fill
@@ -207,7 +207,7 @@ export function StoryPlayer({ story }: { story: Story }) {
   return (
     <div className="relative min-h-[calc(100vh-65px)] flex items-center justify-center p-4">
       <Image
-        src={imageUrl}
+        src={`https://picsum.photos/seed/${story.id}-${currentNode.node_id}/1920/1080`}
         alt={imageHint}
         data-ai-hint={imageHint}
         fill

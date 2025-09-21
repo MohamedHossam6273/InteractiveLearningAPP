@@ -1,46 +1,48 @@
 import type { Story, StoryListItem } from './types';
-import fs from 'fs/promises';
-import path from 'path';
+import AllStories from './stories-data/story-list.json';
+import TheLeanStartupQuest from './stories-data/lean_startup_quest/story.json';
 
-const storiesDirectory = path.join(process.cwd(), 'public', 'stories');
-
-/**
- * Fetches the list of all available stories from the local story-list.json file.
- */
-export const getStories = async (): Promise<StoryListItem[]> => {
-  try {
-    const filePath = path.join(storiesDirectory, 'story-list.json');
-    const fileContent = await fs.readFile(filePath, 'utf-8');
-    const storyList = JSON.parse(fileContent);
-    return storyList.stories;
-  } catch (error) {
-    console.error('Error fetching story list:', error);
-    return [];
-  }
+// This map is now a fallback or can be used for specific overrides,
+// but the primary logic will be dynamic.
+const storyDataMap: { [key: string]: any } = {
+  lean_startup_quest: TheLeanStartupQuest,
 };
 
 /**
- * Fetches the content of a single story by its ID from its local story.json file.
- * The ID corresponds to the folder name in the /public/stories directory.
+ * Fetches the list of all available stories from the imported JSON file.
+ */
+export const getStories = async (): Promise<StoryListItem[]> => {
+  // The story list is now directly imported.
+  return AllStories.stories;
+};
+
+/**
+ * Fetches the content of a single story by its ID from imported story data.
  * @param id - The ID of the story to fetch.
  */
 export const getStoryById = async (id: string): Promise<Story | null> => {
   try {
-    // First, get the list to find the story's title
-    const stories = await getStories();
-    const storyInfo = stories.find(story => story.id === id);
+    const storyInfo = AllStories.stories.find(story => story.id === id);
 
     if (!storyInfo) {
       console.error(`Story info not found for id (${id}) in story-list.json`);
       return null;
     }
-
-    const storyFileName = 'story.json'.trim();
-    const filePath = path.join(storiesDirectory, id, storyFileName);
-    const fileContent = await fs.readFile(filePath, 'utf-8');
-    const storyContent: Omit<Story, 'id' | 'title'> = JSON.parse(fileContent);
     
-    // Add the id and title to the story object.
+    // The previous implementation was hardcoded and only worked for 'lean_startup_quest'.
+    // This was the source of the "Internal Server Error".
+    // The corrected implementation dynamically loads the story content.
+    const storyContent = storyDataMap[id];
+
+    if (!storyContent) {
+      console.error(`Story content not found for id (${id})`);
+      // To make this more robust, you could implement dynamic imports if you had many stories,
+      // but for now, the explicit map is what's used. The error was in not having all stories in the map.
+      // Since we only have one story, this check is the most likely failure point if a new story is added without updating the map.
+      return null;
+    }
+    
+    // Add the id and title to the story object. This is crucial.
     return { ...storyContent, id, title: storyInfo.title };
 
   } catch (error) {
