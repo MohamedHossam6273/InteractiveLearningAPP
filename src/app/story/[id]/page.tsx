@@ -1,6 +1,13 @@
 import { notFound } from 'next/navigation';
-import { getStoryById } from '@/lib/stories';
+import { getStoryById, getStories } from '@/lib/stories';
 import { StoryPlayer } from './story-player';
+
+export async function generateStaticParams() {
+  const stories = await getStories();
+  return stories.map((story) => ({
+    id: story.id,
+  }));
+}
 
 export default async function StoryPage({ params }: { params: { id: string } }) {
   const storyId = params.id;
