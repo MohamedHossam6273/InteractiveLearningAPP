@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, useMemo, useCallback } from 'react';
@@ -184,11 +185,6 @@ export function StoryPlayer({ story }: { story: Story }) {
         <div className="max-w-prose w-full text-lg text-foreground bg-black/40 backdrop-blur-md p-8 rounded-lg shadow-2xl border border-white/10">
             <div className="w-full animate-fade-in">
                 <p className="mb-4 leading-relaxed text-white">{currentNode.text_ar}</p>
-                {/* Example Affiliate Link */}
-                <p className="text-center text-sm text-gray-300 my-4">أعجبك ما تعلمته؟ تحقق من الكتاب الكامل:</p>
-                <Button onClick={() => handleAffiliateClick(`https://www.amazon.com/dp/B004J4XGN6?tag=youraffiliatetag-20`)} className='w-full'>
-                    شراء "The Lean Startup" على أمازون
-                </Button>
             </div>
             <div className='flex flex-col gap-4 mt-8'>
                 <h2 className="text-xl font-bold text-center text-white">النهاية</h2>
@@ -237,3 +233,5 @@ export function StoryPlayer({ story }: { story: Story }) {
     </div>
   );
 }
+
+    
