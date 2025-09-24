@@ -28,7 +28,7 @@ export default function Home() {
           style={{ animationFillMode: 'backwards' }}
         >
           <h1 className="text-4xl md:text-6xl font-bold font-headline mb-4 text-primary">
-            تحوت
+            سنوحي
           </h1>
           <div className="text-lg md:text-2xl mb-8 max-w-3xl mx-auto text-foreground/80 h-24 flex items-center justify-center">
             <RotatingText texts={rotatingTaglines} />
